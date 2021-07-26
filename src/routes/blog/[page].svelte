@@ -1,13 +1,10 @@
-<script context="module">
-    console.log('does it work here?');
+<script context="module" lang="ts">
     export const prerender = true;
 
     export async function load({ page, fetch, session, context }) {
-        console.log('does it work?');
         // Retrieve data about the post
         const pageNum = +page.params?.page || 1;
         const url = `/posts.json?page=${pageNum}`;
-        console.log(url);
         const res = await fetch(url);
 
         // If the response is successful, render the post
@@ -32,7 +29,6 @@
 
 <script>
     import BlogSnippets from '../../components/BlogSnippets.svelte';
-
     export let posts;
     export let pages;
     export let pageNum;
